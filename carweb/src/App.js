@@ -1,10 +1,9 @@
 import React from 'react'
+import Reg from './pages/registration & Login/Registration/reg.jsx';
 
 const App = () => {
   return (
-    <div>
-      Hello Car Web!
-    </div>
+    <Reg />
   )
 }
 
