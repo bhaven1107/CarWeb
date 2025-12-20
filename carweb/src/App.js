@@ -1,9 +1,11 @@
 import React from 'react'
-import Reg from './pages/registration & Login/Registration/reg.jsx';
+import AppRoutes from './Routing/CarRoutes.jsx';
 
 const App = () => {
   return (
-    <Reg />
+    <div>
+      <AppRoutes/>
+    </div>
   )
 }
 

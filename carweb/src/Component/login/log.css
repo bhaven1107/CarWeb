@@ -1,0 +1,167 @@
+/* ===== Background ===== */
+body {
+    background: radial-gradient(circle at top, #1a1a1a, #000000);
+    font-family: "Poppins", sans-serif;
+}
+
+/* ===== Card ===== */
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #0b0b0b, #1a1a1a);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.15),
+        0 25px 60px rgba(0, 0, 0, 0.9);
+    animation: fadeUp 0.8s ease;
+}
+
+/* ===== Title ===== */
+.login-title {
+    padding-bottom: 5px;
+    font-size: 38px;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(90deg, #ffd700, #ffb703, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+/* ===== Inputs ===== */
+.custom-input {
+    height: 56px;
+    background: transparent;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 215, 0, 0.45);
+    color: #fff;
+    font-size: 16px;
+    padding-left: 16px;
+}
+
+.custom-input::placeholder {
+    color: rgba(255, 215, 0, 0.65);
+}
+
+.custom-input:focus {
+    background: transparent;
+    color: #fff;
+    border-color: #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+/* ===== Sign In Button ===== */
+.btn-login {
+    height: 56px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #ffd700, #ffb703, #ffd700) !important;
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Sign In Button Hover */
+.btn-login:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: #ffd700;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+}
+
+/* ===== Register Button ===== */
+.btn-register {
+    height: 56px;
+    border-radius: 32px;
+    background: transparent;
+    border: 2px solid #ffd700;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #ffd700;
+    color: #fff !important;
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.8);
+}
+
+/* ===== Animation ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Cursor Hover Golden Light ===== */
+.login-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.18),
+            rgba(255, 215, 0, 0.08),
+            transparent 60%);
+    opacity: 0;
+    transform: translate(-30%, -30%);
+    transition: opacity 0.4s ease;
+    animation: goldenMove 8s linear infinite;
+    pointer-events: none;
+}
+
+.login-card:hover::before {
+    opacity: 1;
+}
+
+/* ===== Forgot Password Link ===== */
+.forgot-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffd700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+
+@keyframes goldenMove {
+    0% {
+        transform: translate(-30%, -30%);
+    }
+
+    25% {
+        transform: translate(30%, -20%);
+    }
+
+    50% {
+        transform: translate(20%, 30%);
+    }
+
+    75% {
+        transform: translate(-20%, 20%);
+    }
+
+    100% {
+        transform: translate(-30%, -30%);
+    }
+}
