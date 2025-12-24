@@ -5,16 +5,15 @@ import { useNavigate } from "react-router-dom";
 const useResetPasswordLogic = () => {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        password: "",
-        confirmPassword: "",
-    });
+    const [formData, setFormData] = useState({ password: "", confirmPassword: "" });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    // ✅ show/hide password states
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,15 +23,20 @@ const useResetPasswordLogic = () => {
             return;
         }
 
+        const token = localStorage.getItem("resetToken");
+        if (!token) {
+            setError("Token not found. Please verify OTP again.");
+            return;
+        }
+
         try {
             setLoading(true);
             setError("");
+            await resetpass(formData, token);
 
-            await resetpass({
-                password: formData.password,
-                // userid or token jo backend ma joiye hoy to ahi moklo
-            });
-
+            alert("Password reset successfully");
+            localStorage.removeItem("resetToken");
+            localStorage.removeItem("resetEmail");
             navigate("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Something went wrong");
@@ -47,6 +51,10 @@ const useResetPasswordLogic = () => {
         error,
         handleChange,
         handleSubmit,
+        showPassword,
+        showConfirmPassword,
+        setShowPassword,
+        setShowConfirmPassword,
     };
 };
 

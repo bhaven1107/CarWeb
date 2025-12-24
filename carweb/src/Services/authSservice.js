@@ -13,9 +13,16 @@ export const Forgetpass = (data) => {
     return axios.post("http://localhost:5000/api/auth/forget-password", data);
 };
 
-
-export const resetpass = (data) => {
-    return axios.post("http://localhost:5000/api/auth/reset-password", data);
+export const resetpass = (data, token) => {
+    return axios.post(
+        "http://localhost:5000/api/auth/reset-password",
+        data,
+        {
+            headers: {
+                Authorization: `Bearer ${token}` // send token in header
+            }
+        }
+    );
 };
 
 export const OtpVerify = (data) => {

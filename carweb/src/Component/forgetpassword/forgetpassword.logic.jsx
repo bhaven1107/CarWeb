@@ -22,7 +22,8 @@ const useForgetPasswordLogic = () => {
         try {
             const res = await Forgetpass({ email });
             setSuccess(res.data.message || "Reset link sent to your email!");
-            navigate("/verify-otp");       
+            localStorage.setItem("resetEmail", email);
+            navigate("/verify-otp");
         } catch (err) {
             setError(err.response?.data?.message || "Failed to send reset link");
         } finally {

@@ -12,7 +12,7 @@ const OTP = () => {
             <div className="login-card shadow-lg p-4">
                 <h2 className="text-center mb-4 login-title">Enter OTP</h2>
                 <p className="text-center mb-4" style={{ color: "#fff", fontSize: "14px" }}>
-                    We have sent a 4-digit code to your email/phone
+                    We have sent a 4-digit code to your email
                 </p>
 
                 <form onSubmit={handleSubmit}>
