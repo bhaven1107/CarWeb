@@ -1,0 +1,83 @@
+.car-slider {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    background: #0b0b0b;
+    font-family: "Poppins", sans-serif;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.2));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 8%;
+    color: #d4af37;
+}
+
+.overlay h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.overlay p {
+    font-size: 1.2rem;
+    color: #f7f5f2;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.overlay button {
+    width: 200px;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.overlay button:hover {
+    background: #d4af37;
+    color: #0b0b0b;
+}
+
+.dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 6px;
+    background: #777;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.active-dot {
+    background: #d4af37;
+}
