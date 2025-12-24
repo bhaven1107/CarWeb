@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./forgetpassword.css"; // correct import
+import useForgetPasswordLogic from "./forgetpassword.logic";
+import "./forgetpassword.css";
 
 const ForgetPassword = () => {
-    const navigate = useNavigate();
+    const { email, loading, error, success, handleChange, handleSubmit } =
+        useForgetPasswordLogic();
 
     return (
         <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -14,17 +15,27 @@ const ForgetPassword = () => {
                     Enter your email to reset your password
                 </p>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <input
                             type="email"
-                            className=" custom-input"
+                            className="custom-input"
                             placeholder="E-mail"
+                            value={email}
+                            onChange={handleChange}
+                            required
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-forget w-100">
-                        Submit
+                    {error && <p className="text-danger">{error}</p>}
+                    {success && <p className="text-success">{success}</p>}
+
+                    <button
+                        type="submit"
+                        className="btn btn-forget w-100"
+                        disabled={loading}
+                    >
+                        {loading ? "Sending..." : "Submit"}
                     </button>
                 </form>
             </div>

@@ -1,9 +1,11 @@
 import React from "react";
+import useOtpLogic from "./otp.logic";
 import { useNavigate } from "react-router-dom";
-import "./otp.css"; // Reuse the same CSS as login
+import "./otp.css";
 
 const OTP = () => {
     const navigate = useNavigate();
+    const { otp, loading, error, handleChange, handleSubmit } = useOtpLogic();
 
     return (
         <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -13,16 +15,25 @@ const OTP = () => {
                     We have sent a 4-digit code to your email/phone
                 </p>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="d-flex justify-content-between mb-4" style={{ gap: "10px" }}>
-                        <input type="text" maxLength="1" className=" custom-input otp-input" />
-                        <input type="text" maxLength="1" className=" custom-input otp-input" />
-                        <input type="text" maxLength="1" className=" custom-input otp-input" />
-                        <input type="text" maxLength="1" className=" custom-input otp-input" />
+                        {otp.map((digit, i) => (
+                            <input
+                                key={i}
+                                id={`otp-${i}`}
+                                type="text"
+                                maxLength="1"
+                                className="custom-input otp-input"
+                                value={digit}
+                                onChange={(e) => handleChange(e, i)}
+                            />
+                        ))}
                     </div>
 
-                    <button type="submit" className="btn btn-login w-100 mb-3">
-                        Verify OTP
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <button type="submit" className="btn btn-login w-100 mb-3" disabled={loading}>
+                        {loading ? "Verifying..." : "Verify OTP"}
                     </button>
 
                     <span

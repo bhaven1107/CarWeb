@@ -30,6 +30,24 @@ body {
     letter-spacing: 1px;
 }
 
+.password-wrapper {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.password-icon:hover {
+    color: #000;
+}
+
+
 /* ===== Inputs ===== */
 .custom-input {
     height: 56px;

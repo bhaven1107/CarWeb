@@ -5,8 +5,7 @@ import Navbar from './Component/header/Navbar.jsx';
 const App = () => {
   return (
     <>
-      {/* <AppRoutes/> */}
-      <Navbar />
+      <AppRoutes />
     </>
   )
 }

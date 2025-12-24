@@ -1,9 +1,12 @@
 import React from "react";
+import useResetPasswordLogic from "./Resetpassword.logic";
 import { useNavigate } from "react-router-dom";
-import "./Resetpassword.css"; // Reuse your existing CSS
+import "./Resetpassword.css";
 
 const ResetPassword = () => {
     const navigate = useNavigate();
+    const { formData, loading, error, handleChange, handleSubmit } =
+        useResetPasswordLogic();
 
     return (
         <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -13,25 +16,33 @@ const ResetPassword = () => {
                     Enter your new password below
                 </p>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <input
                             type="password"
-                            className=" custom-input"
+                            name="password"
+                            className="custom-input"
                             placeholder="New Password"
+                            value={formData.password}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className="mb-3">
                         <input
                             type="password"
-                            className=" custom-input"
+                            name="confirmPassword"
+                            className="custom-input"
                             placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-login w-100 mb-3">
-                        Reset Password
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <button type="submit" className="btn btn-login w-100 mb-3" disabled={loading}>
+                        {loading ? "Resetting..." : "Reset Password"}
                     </button>
 
                     <span

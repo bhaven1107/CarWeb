@@ -65,6 +65,18 @@
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
     color: #fff;
 }
+.password-wrapper {
+    position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+}
 
 
 /* ===== Login Button ===== */

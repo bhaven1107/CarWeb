@@ -1,61 +1,80 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./reg.css";
+import useRegisterLogic from "./Register.logic"; // <-- FIXED
 
 const Register = () => {
-
     const navigate = useNavigate();
-
-    const gotologin = () => {
-        navigate("/login");
-    };
+    const { formData, handleChange, handleSubmit, loading, error ,showPassword,togglePassword 
+    } = useRegisterLogic();
 
     return (
         <div className="container d-flex justify-content-center align-items-center min-vh-100">
             <div className="register-card shadow-lg p-4">
                 <h2 className="text-center mb-4 register-title">Register</h2>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <input
                             type="text"
-                            className=" custom-input"
+                            name="name"
+                            className="custom-input"
                             placeholder="Full Name"
+                            value={formData.name}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className="mb-3">
                         <input
                             type="email"
-                            className=" custom-input"
+                            name="email"
+                            className="custom-input"
                             placeholder="E-mail"
+                            value={formData.email}
+                            onChange={handleChange}
                         />
                     </div>
 
                     <div className="mb-3">
                         <input
                             type="tel"
-                            className=" custom-input"
+                            name="phone"
+                            maxLength={10}
+                            className="custom-input"
                             placeholder="Phone"
+                            value={formData.phone}
+                            onChange={handleChange}
                         />
                     </div>
 
-                    <div className="mb-3">
+                    <div className="mb-3 password-wrapper">
                         <input
-                            type="password"
-                            className=" custom-input"
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            className="custom-input"
                             placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
                         />
+                        <i
+                            className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"} password-icon`}
+                            onClick={togglePassword}
+                            style={{ cursor: "pointer", position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)" }}
+                        ></i>
                     </div>
 
-                    <button type="submit" className="btn btn-register w-100 mb-3">
-                        Register
+
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <button type="submit" className="btn btn-register w-100 mb-3" disabled={loading}>
+                        {loading ? "Registering..." : "Register"}
                     </button>
 
                     <button
                         type="button"
                         className="btn btn-login w-100"
-                        onClick={gotologin}
+                        onClick={() => navigate("/login")}
                         style={{ color: "white" }}
                     >
                         Have account? Sign In
