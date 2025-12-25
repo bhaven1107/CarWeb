@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { resetpass } from "../../Services/authSservice";
 import { useNavigate } from "react-router-dom";
+import { register } from "../../Services/authSservice";
 
-const useResetPasswordLogic = () => {
+const useRegisterLogic = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
         password: "",
-        confirmPassword: "",
     });
 
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -17,11 +20,15 @@ const useResetPasswordLogic = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const togglePassword = () => {
+        setShowPassword(prev => !prev);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
+        if (!formData.name || !formData.email || !formData.phone || !formData.password) {
+            setError("All fields are required");
             return;
         }
 
@@ -29,19 +36,13 @@ const useResetPasswordLogic = () => {
             setLoading(true);
             setError("");
 
-            const email = localStorage.getItem("resetEmail"); // ✅ VERY IMPORTANT
+            await register(formData);
 
-            await resetpass({
-                email,
-                newPassword: formData.password // ✅ backend key match
-            });
-
-            alert("Password reset successful");
-            localStorage.removeItem("resetEmail"); // cleanup
+            alert("Registration successful");
             navigate("/login");
 
         } catch (err) {
-            setError(err.response?.data?.message || "Something went wrong");
+            setError(err.response?.data?.message || "Registration failed");
         } finally {
             setLoading(false);
         }
@@ -49,13 +50,13 @@ const useResetPasswordLogic = () => {
 
     return {
         formData,
-        loading,
-        error,
         handleChange,
         handleSubmit,
+        loading,
+        error,
+        showPassword,
+        togglePassword,
     };
 };
 
-export default useResetPasswordLogic;
-
-
+export default useRegisterLogic;
