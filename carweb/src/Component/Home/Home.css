@@ -1,0 +1,55 @@
+/* MAIN NAVBAR */
+.navbar-container {
+    background-color: #3C3D37;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* LOGO */
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ECDFCC;
+}
+
+.navbar-container .navbar-logo a {
+    text-decoration: none;
+    color: #ECDFCC;
+}
+
+
+/* CENTER MENU */
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
+
+.navbar-menu li {
+    color: #ECDFCC;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 1px;
+    position: relative;
+    margin-top: 15px;
+}
+
+/* Hover underline effect */
+.navbar-menu li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #ECDFCC;
+    transition: 0.3s;
+}
+
+.navbar-menu li:hover::after {
+    width: 100%;
+}
+
