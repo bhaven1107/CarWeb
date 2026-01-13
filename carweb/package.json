@@ -14,11 +14,14 @@
     "bootstrap": "^5.3.8",
     "cookie": "^0.6.0",
     "framer-motion": "^12.23.26",
+    "owl.carousel": "^2.3.4",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-icons": "^5.5.0",
+    "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^7.11.0",
     "react-scripts": "^5.0.1",
+    "swiper": "^12.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

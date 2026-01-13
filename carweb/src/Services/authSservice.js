@@ -28,3 +28,7 @@ export const resetpass = (data, token) => {
 export const OtpVerify = (data) => {
     return axios.post("http://localhost:5000/api/auth/verify-otp", data);
 };
+
+export const getHomeSliders = () => {
+    return api.get("http://localhost:5000/api/sliders/home");
+};
