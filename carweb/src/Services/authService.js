@@ -36,3 +36,11 @@ export const getHomeSliders = () => {
 export const getHomeServices = () => {
     return api.get("http://localhost:5000/api/Home/Service");
 }
+
+export const getAllCategories = () => {
+    return api.get("http://localhost:5000/api/Home/category")
+}
+
+export const getAllAds = () => {
+    return api.get("http://localhost:5000/api/home/bestselling");
+}

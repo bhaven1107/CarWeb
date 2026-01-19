@@ -4,20 +4,14 @@ import Header from "../header/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
-
 import useHomeLogic from "./Homelogic";
-
-const categories = [
-    { id: 1, title: "Autoparts", image: "./assests/204_thumb.png" },
-    { id: 2, title: "Engine Parts", image: "./assests/221_thumb.png" },
-    { id: 3, title: "Exhaust Parts", image: "./assests/222_thumb.png" },
-    { id: 4, title: "Brake Parts", image: "./assests/223_thumb.png" },
-    { id: 5, title: "Body Parts", image: "./assests/204_thumb.png" },
-];
 
 const Home = () => {
 
-    const { sliders, slidersLoading, services, servicesLoading } = useHomeLogic();
+    const { sliders, slidersLoading,
+        services, servicesLoading,
+        categories, Categoryloading,
+        ads, adsLoading } = useHomeLogic();
 
     return (
         <>
@@ -78,9 +72,8 @@ const Home = () => {
 
             {/* start Category sec */}
 
-            <div className="category-sec mb-5">
+            <div className="category-sec mb-5 mt-5">
                 <div className="container">
-                    {/* Section Title */}
                     <div className="row">
                         <div className="col-12">
                             <div className="category-title">
@@ -89,7 +82,6 @@ const Home = () => {
                         </div>
                     </div>
 
-                    {/* Swiper Slider */}
                     <div className="category-slider-wrapper">
                         <button className="cat-prev">
                             <i className="fa-solid fa-chevron-left"></i>
@@ -101,26 +93,22 @@ const Home = () => {
                         <Swiper
                             modules={[Navigation, Autoplay]}
                             spaceBetween={15}
-                            loop={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
+                            speed={800}
+                            loop
+                            autoplay={{ delay: 3500, disableOnInteraction: false }}
                             navigation={{
                                 prevEl: ".cat-prev",
                                 nextEl: ".cat-next",
                             }}
-                            // આ લાઈન ઉમેરો જો બટન કામ ન કરતા હોય
-                            onBeforeInit={(swiper) => {
-                                swiper.params.navigation.prevEl = ".cat-prev";
-                                swiper.params.navigation.nextEl = ".cat-next";
-                            }}
                             breakpoints={{
-                                0: { slidesPerView: 1 },
+                                0: { slidesPerView: 2 },
                                 576: { slidesPerView: 2 },
                                 768: { slidesPerView: 3 },
                                 992: { slidesPerView: 5 },
                             }}
                         >
                             {categories.map((cat) => (
-                                <SwiperSlide key={cat.id}>
+                                <SwiperSlide key={cat._id}>
                                     <div className="cate-img">
                                         <img src={cat.image} alt={cat.title} />
                                         <div className="cate-img-inner">
@@ -132,12 +120,35 @@ const Home = () => {
                             ))}
                         </Swiper>
                     </div>
-
                 </div>
             </div>
 
-
             {/* end Category sec */}
+
+            {/* start best item sec */}
+
+            <div className="best-sec mt-5 mb-5">
+                <div className="container">
+                    <div className="row g-3">
+                        {ads.map((ad, index) => (
+                            <div key={index} className="col-lg-4 col-md-6">
+                                <div className="best-item">
+                                    <img src={ad.image} alt={ad.titleHighlight} />
+                                    <div className="best-inner-text">
+                                        <span>{ad.titleSmall}</span>
+                                        <h3>
+                                            {ad.titleMain} <strong>{ad.titleHighlight}</strong>
+                                        </h3>
+                                        <button>SHOP NOW</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* end best item sec */}
         </>
     );
 };

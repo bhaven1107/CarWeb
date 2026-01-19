@@ -176,39 +176,48 @@
 .cate-img {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
     cursor: pointer;
 }
 
 .cate-img img {
     width: 100%;
-    display: block;
-    transition: transform 0.3s ease;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
 .cate-img:hover img {
     transform: scale(1.1);
 }
 
-/* Inner Title */
 .cate-img-inner h4 {
     position: absolute;
     bottom: 0;
     width: 100%;
     left: 0;
-    box-sizing: border-box;
     padding: 12px 8px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     text-align: center;
     color: #fff;
     background: rgba(0, 0, 0, 0.35);
     font-size: 18px;
     font-weight: 600;
     z-index: 2;
+    transition: all 0.3s ease;
 }
+
+.cate-img:hover .cate-img-inner h4 {
+    background: #c72028;
+    color: #fff;
+}
+
 
 .cate-img .cate-btn {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
     background-color: #ece3e3;
     color: #000;
     font-weight: 600;
@@ -219,6 +228,11 @@
     cursor: pointer;
     z-index: 5;
     transition: all 0.3s ease;
+}
+
+.cate-img:hover .cate-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .cate-img .cate-btn:hover {
@@ -262,4 +276,100 @@
     /* adjust as needed */
 }
 
+@media (max-width: 991px) {
+    .cate-img img {
+        height: 220px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+    .cate-img img {
+        height: 180px;
+    }
+}
+
 /* end category sec */
+
+/* start best sell sec */
+.best-item {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.best-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 260px;
+}
+
+.best-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.best-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: #fff;
+    max-width: 80%;
+}
+
+.best-inner-text span {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.best-inner-text h3 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.best-inner-text h3 strong {
+    color: #c72028;
+}
+
+.best-inner-text button {
+    background: #c72028;
+    border: none;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.best-inner-text button:hover {
+    background: #3b3a3a;
+}
+
+@media (max-width: 991px) {
+    .best-inner-text h3 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 575px) {
+    .best-inner-text {
+        left: 20px;
+    }
+
+    .best-inner-text h3 {
+        font-size: 22px;
+    }
+}
+
+
+/* end best sell sec */
