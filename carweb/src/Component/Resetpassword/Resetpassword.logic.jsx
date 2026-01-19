@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { resetpass } from "../../Services/authSservice";
+import { resetpass } from "../../Services/authService";
 import { useNavigate } from "react-router-dom";
 
 const useResetPasswordLogic = () => {

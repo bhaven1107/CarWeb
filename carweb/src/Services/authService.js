@@ -30,5 +30,9 @@ export const OtpVerify = (data) => {
 };
 
 export const getHomeSliders = () => {
-    return api.get("http://localhost:5000/api/sliders/home");
+    return api.get("http://localhost:5000/api/Home/sldier");
 };
+
+export const getHomeServices = () => {
+    return api.get("http://localhost:5000/api/Home/Service");
+}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Forgetpass } from "../../Services/authSservice"; // adjust path
+import { Forgetpass } from "../../Services/authService"; // adjust path
 import { useNavigate } from "react-router-dom";
 
 const useForgetPasswordLogic = () => {

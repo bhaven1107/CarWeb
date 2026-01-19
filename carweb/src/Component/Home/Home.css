@@ -1,3 +1,4 @@
+/* start hero section css */
 .hero-sec>.row {
     margin: 0px;
     padding: 0px;
@@ -9,9 +10,9 @@
 }
 
 .hero-sec img {
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
 }
 
 .hero-sec .hero-img {
@@ -46,14 +47,219 @@
     margin-bottom: 35px;
     text-transform: uppercase;
 }
-.hero-inner-text>button{
+
+.hero-inner-text>button {
     color: white;
     background-color: red;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 30px;
+    font-size: 20px;
     border: none;
 }
-.hero-inner-text>button:hover{
-    background-color: black;
+
+.hero-inner-text>button:hover {
     color: white;
+    background-color: #2a2828;
+    transition: all 0.3s ease-in-out;
 }
+
+
+/* end hero section css */
+
+/* start service section css */
+
+/* start Service Section */
+
+.service-sec {
+    background: #fff;
+}
+
+.service-inner {
+    align-items: center;
+    padding: 12px 0;
+}
+
+/* Icon */
+.serivce-img img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Text */
+.service-title h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.service-title span {
+    font-size: 14px;
+    white-space: nowrap;
+    color: #666;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .service-inner {
+        justify-content: center;
+        text-align: left;
+    }
+}
+
+@media (max-width: 575px) {
+    .service-inner {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .serivce-img img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .service-title h4 {
+        font-size: 14px;
+    }
+
+    .service-title span {
+        font-size: 13px;
+    }
+}
+
+/* end service section css */
+
+/* start category sec */
+
+.category-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-title h1 {
+    display: inline-block;
+    padding: 0 25px;
+    font-size: 40px;
+    font-weight: 600;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.category-title::before,
+.category-title::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.category-title::before {
+    left: 10%;
+    background-image: linear-gradient(to right, #babdc2, #c72028);
+}
+
+.category-title::after {
+    right: 10%;
+    background-image: linear-gradient(to left, #babdc2, #c72028);
+}
+
+/* Category Item */
+.cate-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cate-img img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.cate-img:hover img {
+    transform: scale(1.1);
+}
+
+/* Inner Title */
+.cate-img-inner h4 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    box-sizing: border-box;
+    padding: 12px 8px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.35);
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.cate-img .cate-btn {
+    position: absolute;
+    background-color: #ece3e3;
+    color: #000;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.cate-img .cate-btn:hover {
+    background-color: #c72028;
+    color: #fff;
+}
+
+.cate-img:hover .cate-btn {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.category-slider-wrapper {
+    position: relative;
+}
+
+.cat-prev,
+.cat-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: 1px solid #c72028;
+    color: #c72028;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cat-prev {
+    left: -15px;
+}
+
+.cat-next {
+    right: -15px;
+    /* adjust as needed */
+}
+
+/* end category sec */

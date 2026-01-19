@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { OtpVerify } from "../../Services/authSservice";
+import { OtpVerify } from "../../Services/authService";
 import { useNavigate } from "react-router-dom";
 
 const useOtpLogic = () => {
