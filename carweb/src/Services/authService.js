@@ -44,3 +44,15 @@ export const getAllCategories = () => {
 export const getAllAds = () => {
     return api.get("http://localhost:5000/api/home/bestselling");
 }
+
+export const getAllCollections = () => {
+  return api.get("http://localhost:5000/api/home/collections");
+};
+
+export const getAllTestimonials = () => {
+    return api.get("http://localhost:5000/api/home/testimonials");
+}
+
+export const getAllBrands = () => {
+    return api.get("http://localhost:5000/api/home/brands");
+}

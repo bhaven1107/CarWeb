@@ -2,8 +2,9 @@
 import "./Home.css";
 import Header from "../header/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/pagination";
 import useHomeLogic from "./Homelogic";
 
 const Home = () => {
@@ -11,7 +12,9 @@ const Home = () => {
     const { sliders, slidersLoading,
         services, servicesLoading,
         categories, Categoryloading,
-        ads, adsLoading } = useHomeLogic();
+        ads, adsLoading,
+        collections, collectionsLoading,
+        testimonials,Brands} = useHomeLogic();
 
     return (
         <>
@@ -162,78 +165,22 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            {/* ITEM 1 */}
-                            <div className="col-lg-3">
-                                <div className="collection-item">
-                                    <div className="badge new">NEW</div>
-                                    <div className="badge sale">ON SALE!</div>
+                            {collections.map((item) => (
+                                <div className="col-lg-3 mb-4 col-md-4 col-sm-6" key={item._id}>
+                                    <div className="collection-item">
 
-                                    <img src="./assests/accusantium-dolore.jpg" alt="" />
+                                        {item.isNew && <div className="badge new">NEW</div>}
+                                        {item.onSale && <div className="badge sale">ON SALE!</div>}
 
-                                    <h4>Perspiciatis Unde</h4>
-                                    <p className="price">$111.00</p>
+                                        <img src={item.image} alt={item.title} />
 
-                                    <button>Add to Cart</button>
+                                        <h4>{item.title}</h4>
+                                        <p className="price">${item.price}.00</p>
+
+                                        <button>Add to Cart</button>
+                                    </div>
                                 </div>
-                            </div>
-
-                            {/* ITEM 2 */}
-                            <div className="col-lg-3">
-                                <div className="collection-item">
-                                    <div className="badge new">NEW</div>
-                                    <div className="badge sale">ON SALE!</div>
-
-                                    <img src="./assests/omnis-iste.jpg" alt="" />
-
-                                    <h4>Omnis Iste</h4>
-                                    <p className="price">$209.00</p>
-
-                                    <button>Add to Cart</button>
-                                </div>
-                            </div>
-
-                            {/* ITEM 3 */}
-                            <div className="col-lg-3">
-                                <div className="collection-item">
-                                    <div className="badge new">NEW</div>
-                                    <div className="badge sale">ON SALE!</div>
-
-                                    <img src="./assests/adipisci-velit.jpg" alt="" />
-
-                                    <h4>Accusantium Dolore</h4>
-                                    <p className="price">$309.00</p>
-
-                                    <button>Add to Cart</button>
-                                </div>
-                            </div>
-
-                            {/* ITEM 4 */}
-                            <div className="col-lg-3">
-                                <div className="collection-item">
-                                    <div className="badge new">NEW</div>
-                                    <div className="badge sale">ON SALE!</div>
-
-                                    <img src="./assests/rem-aperiam.jpg" alt="" />
-
-                                    <h4>Rem Aperiam</h4>
-                                    <p className="price">$259.00</p>
-
-                                    <button>Add to Cart</button>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-3">
-                                <div className="collection-item">
-                                    <div className="badge new">NEW</div>
-
-                                    <img src="./assests/rem-aperiam.jpg" alt="" />
-
-                                    <h4>Rem Aperiam</h4>
-                                    <p className="price">$259.00</p>
-
-                                    <button>Add to Cart</button>
-                                </div>
-                            </div>
+                            ))}
 
                         </div>
                     </div>
@@ -241,6 +188,72 @@ const Home = () => {
 
                 {/* end collection section */}
 
+                {/* start Testimonial sec */}
+
+                <div className="testi-sec">
+                    <div className="container">
+                        <Swiper
+                            modules={[Pagination, Autoplay]}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 4000 }}
+                            loop={true}
+                            className="testi-slider"
+                        >
+                            {testimonials.map((t) => (
+                                <SwiperSlide key={t._id}>
+                                    <div className="testi-item">
+                                        <div className="testi-left">
+                                            <img src={t.image} alt={t.name} />
+                                            <h4>{t.name}</h4>
+                                            <span>{t.role}</span>
+                                        </div>
+
+                                        <div className="testi-right">
+                                            <p>{t.message}</p>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+
+                {/* end testimonial sec */}
+
+                {/* start brand sec */}
+
+                <div className="brand-sec">
+                    <div className="container">
+                        <div className="category-title">
+                            <h1>Shop By <span>Brand</span></h1>
+                        </div>
+
+                        <Swiper
+                            modules={[Autoplay]}
+                            slidesPerView={4}
+                            spaceBetween={30}
+                            loop={true}
+                            autoplay={{ delay: 2500, disableOnInteraction: false }}
+                            breakpoints={{
+                                0: { slidesPerView: 2 },
+                                480: { slidesPerView: 3 },
+                                768: { slidesPerView: 4 },
+                                992: { slidesPerView: 5 },
+                            }}
+                            navigation
+                            className="brand-slider"
+                        >
+                            {Brands.map((brand) => (
+                                <SwiperSlide key={brand._id} className="brand-slide">
+                                    <img src={brand.image} alt={brand.title} />
+                                    {/* <p className="brand-title">{brand.title}</p>  */}
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+
+                {/* end brand sec  */}
             </div>
 
         </>

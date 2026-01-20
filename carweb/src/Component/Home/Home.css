@@ -383,6 +383,7 @@
 /* end best sell sec */
 
 /* start collection css */
+
 .collection-sec {
     margin: 80px 0px 30px 0px;
 }
@@ -461,5 +462,244 @@
     background: #3b3a3a;
 }
 
+/* Mobile view – 2 cards per row */
+@media (max-width: 767px) {
+    .collection-sec .col-lg-3 {
+        width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .collection-item img {
+        height: 260px;
+    }
+
+    .collection-item h4 {
+        font-size: 15px;
+    }
+
+    .collection-item .price {
+        font-size: 14px;
+    }
+
+    .collection-item button {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+    }
+}
 
 /* end collection css */
+
+/* start testimonial sec */
+
+.testi-sec {
+    padding: 35px 0px 30px 0px;
+}
+
+.testi-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+    /* horizontal center */
+    align-items: center;
+    /* vertical center */
+}
+
+.testi-item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.testi-left {
+    width: 200px;
+    text-align: center;
+}
+
+.testi-left img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.testi-left h4 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.testi-left span {
+    font-size: 14px;
+    color: #777;
+}
+
+.testi-right {
+    position: relative;
+    max-width: 700px;
+    padding-left: 50px;
+    flex: 1;
+}
+
+.testi-right::before {
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: -20px;
+    top: -15px;
+    font-size: 40px;
+    line-height: 36px;
+    color: #c72028;
+}
+
+.testi-right p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+}
+
+.testi-slider .swiper-pagination {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.testi-slider .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #d9d9d9;
+    opacity: 1;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+/* active dot */
+.testi-slider .swiper-pagination-bullet-active {
+    border-color: #c72028;
+    background-color: #f80011c9;
+    box-shadow:
+        0 0 0 3px rgba(199, 32, 40, 0.25),
+        0 0 10px rgba(199, 32, 40, 0.6);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .testi-item {
+        gap: 30px;
+    }
+
+    .testi-right {
+        padding-left: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testi-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .testi-right {
+        padding-left: 0;
+        max-width: 100%;
+    }
+
+    .testi-right::before {
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+    }
+
+    .testi-right p {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testi-left img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .testi-left h4 {
+        font-size: 16px;
+    }
+
+    .testi-left span {
+        font-size: 12px;
+    }
+
+    .testi-right p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .testi-slider .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+    }
+}
+
+/* end testimonial sec */
+
+/* start brand sec */
+
+.brand-sec {
+    margin: 10px 0px 50px 0px;
+}
+.brand-sec .category-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand-sec .category-title h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.brand-sec .category-title h1 span {
+    color: #c72028;
+}
+
+.brand-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-slider img {
+    max-width: 150px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.brand-slider img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Swiper navigation arrows */
+.brand-slider .swiper-button-next,
+.brand-slider .swiper-button-prev {
+    color: #c72028;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .brand-slider img {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-slider img {
+        max-width: 100px;
+    }
+}
+
+
+/* end brand sec */
