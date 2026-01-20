@@ -70,7 +70,7 @@ const useHomeLogic = () => {
         try {
             const res = await getAllAds();
             console.log("ads:", ads);
-            setAds(res?.data?.data || []);
+            setAds(Array.isArray(res.data) ? res.data : []);
         } catch (err) {
             console.error("Error fetching ads:", err);
             setAds([]);

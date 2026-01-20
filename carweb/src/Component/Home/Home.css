@@ -1,4 +1,9 @@
+.home-body {
+    overflow-x: hidden;
+}
+
 /* start hero section css */
+
 .hero-sec>.row {
     margin: 0px;
     padding: 0px;
@@ -292,6 +297,10 @@
 /* end category sec */
 
 /* start best sell sec */
+.best-sec {
+    margin: 70px 0px 40px 0px;
+}
+
 .best-item {
     position: relative;
     overflow: hidden;
@@ -371,5 +380,86 @@
     }
 }
 
-
 /* end best sell sec */
+
+/* start collection css */
+.collection-sec {
+    margin: 80px 0px 30px 0px;
+}
+
+.category-title>h1>span {
+    color: #c72028;
+}
+
+/* Card */
+.collection-item {
+    position: relative;
+    background: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+/* IMAGE – full cover, no padding */
+.collection-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.badge.new {
+    left: 15px;
+    background: #061625;
+}
+
+.badge.sale {
+    right: 15px;
+    background: #86898e;
+}
+
+.collection-item h4,
+.collection-item .price,
+.collection-item button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.collection-item h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.collection-item .price {
+    margin-bottom: 20px;
+}
+
+/* Button */
+.collection-item button {
+    margin-bottom: 20px;
+    background: #c72028;
+    color: #fff;
+    border: none;
+    margin-left: 20px;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.collection-item button:hover {
+    background: #3b3a3a;
+}
+
+
+/* end collection css */
