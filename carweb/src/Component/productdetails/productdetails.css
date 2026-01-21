@@ -1,0 +1,121 @@
+
+.bread-crum {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.bread-crum a {
+  text-decoration: none;
+  color: #000;
+}
+
+.product-gallery {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #fff;
+}
+.badge.new {
+  left: 10px;
+  background: #000;
+}
+.badge.sale {
+  right: 10px;
+  background: #999;
+}
+
+/* Swiper Main Image */
+.main-img-swiper img {
+  width: 100%;
+  z-index: -1;
+}
+
+/* Thumbnail Slider */
+.thumbs-swiper {
+  margin-top: 15px;
+}
+.thumbs-swiper img {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+/* Product Info */
+.product-info h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.price {
+  color: #d10000;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+.desc {
+  font-size: 14px;
+  color: #555;
+}
+.product-info ul {
+  padding-left: 18px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.option {
+  margin: 15px 0;
+}
+.option label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.color {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  margin-right: 8px;
+}
+.color.white {
+  background: #fff;
+}
+.color.yellow {
+  background: #f1c40f;
+}
+.color.brown {
+  background: #8e5a2b;
+}
+.cart-row {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+.cart-row input {
+  width: 60px;
+  padding: 8px;
+}
+.cart-row button {
+  background: #d10000;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+}
+.stock {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.progress {
+  height: 6px;
+  background-color: #eee;
+}
+.progress-bar {
+  background-color: #0d6efd; /* Bootstrap primary blue */
+}
+.delivery {
+  border: 1px solid #eee;
+  padding: 12px;
+  font-size: 13px;
+}

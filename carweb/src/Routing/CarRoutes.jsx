@@ -6,18 +6,20 @@ import ForgetPassword from '../Component/forgetpassword/forgetpassword';
 import OTP from '../Component/OTP/OTP';
 import ResetPassword from '../Component/Resetpassword/Resetpassword';
 import Home from '../Component/Home/Home';
+import Productdetails from '../Component/productdetails/productdetails';
 
 const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                 <Route path="/" element={<Navigate to="/login" replace />} />
+                <Route path="/" element={<Navigate to="/login" replace />} />
                 <Route path="/login" element={< Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgot-password" element={<ForgetPassword />} />
                 <Route path="/verify-otp" element={<OTP />} />
                 <Route path="/Reset-Password" element={<ResetPassword />} />
-                <Route path="/Dashboard" element={< Home/>} />
+                <Route path="/Dashboard" element={< Home />} />
+                <Route path="/ProductDetails" element={ <Productdetails/> } />
             </Routes>
         </Router>
     );
