@@ -100,7 +100,7 @@ const useHomeLogic = () => {
         const fetchCollections = async () => {
             try {
                 const res = await getAllCollections();
-                setCollections(res.data);
+                setCollections(res.data.data);
             } catch (err) {
                 console.error("Error fetching collections:", err);
             } finally {
@@ -132,7 +132,7 @@ const useHomeLogic = () => {
         const fetchBrands = async () => {
             try {
                 const res = await getAllBrands();
-                setBrands(res.data); // assuming getAllTestimonials returns res.data
+                setBrands(res.data); 
             } catch (err) {
                 console.error("Error fetching testimonials:", err);
             } finally {
