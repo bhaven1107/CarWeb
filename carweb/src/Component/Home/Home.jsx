@@ -4,6 +4,7 @@ import Header from "../header/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import useHomeLogic from "./Homelogic";
 import Footer from "../footer/footer";
@@ -15,7 +16,7 @@ const Home = () => {
         categories, Categoryloading,
         ads, adsLoading,
         collections, collectionsLoading,
-        testimonials,Brands} = useHomeLogic();
+        testimonials, Brands } = useHomeLogic();
 
     return (
         <>
@@ -76,54 +77,29 @@ const Home = () => {
 
                 {/* start Category sec */}
 
-                <div className="category-sec mb-5 mt-5">
+                <div className="category-sec">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="category-title">
-                                    <h1>Shop by Category</h1>
-                                </div>
-                            </div>
-                        </div>
+                        <h1 className="category-title">Shop by Category</h1>
 
-                        <div className="category-slider-wrapper">
-                            <button className="cat-prev">
-                                <i className="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <button className="cat-next">
-                                <i className="fa-solid fa-chevron-right"></i>
-                            </button>
-
-                            <Swiper
-                                modules={[Navigation, Autoplay]}
-                                spaceBetween={15}
-                                speed={800}
-                                loop
-                                autoplay={{ delay: 3500, disableOnInteraction: false }}
-                                navigation={{
-                                    prevEl: ".cat-prev",
-                                    nextEl: ".cat-next",
-                                }}
-                                breakpoints={{
-                                    0: { slidesPerView: 2 },
-                                    576: { slidesPerView: 2 },
-                                    768: { slidesPerView: 3 },
-                                    992: { slidesPerView: 5 },
-                                }}
-                            >
-                                {categories.map((cat) => (
-                                    <SwiperSlide key={cat._id}>
-                                        <div className="cate-img">
-                                            <img src={cat.image} alt={cat.title} />
-                                            <div className="cate-img-inner">
-                                                <h4>{cat.title}</h4>
-                                            </div>
-                                            <button className="cate-btn">View More</button>
+                        <Swiper
+                            slidesPerView={"auto"}
+                            spaceBetween={20}
+                            loop={true}
+                            allowTouchMove={true}
+                            className="marquee-swiper"
+                        >
+                            {[...categories, ...categories].map((cat, i) => (
+                                <SwiperSlide key={i} className="marquee-slide">
+                                    <div className="cate-img">
+                                        <img src={cat.image} alt={cat.title} />
+                                        <div className="cate-img-inner">
+                                            <h4>{cat.title}</h4>
                                         </div>
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div>
+                                        <button className="cate-btn">View More</button>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
 
@@ -257,7 +233,7 @@ const Home = () => {
                 {/* end brand sec  */}
             </div>
 
-            <Footer/>
+            <Footer />
 
         </>
     );
