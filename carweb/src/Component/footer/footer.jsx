@@ -1,108 +1,82 @@
 import React from "react";
-import { motion } from "framer-motion";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube
-} from "react-icons/fa";
-import "./Footer.css";
-
-const container = {
-  hidden: { opacity: 0, y: 60 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      staggerChildren: 0.2,
-      duration: 0.8,
-      ease: "easeOut"
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 }
-};
+import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <motion.div
-        className="footer-container"
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
-        {/* Brand */}
-        <motion.div className="footer-brand" variants={item}>
-          <h2>CarX Elite</h2>
-          <p>
-            Luxury cars crafted for performance, prestige,
-            and perfection.
-          </p>
-        </motion.div>
+    <div className="footer-sec">
+      <div className="container">
+        <div className="row">
 
-        {/* Links */}
-        <motion.div className="footer-links" variants={item}>
-          <h3>Quick Links</h3>
-          <ul>
-            <li>Home</li>
-            <li>Cars</li>
-            <li>Brands</li>
-            <li>Services</li>
-            <li>Contact</li>
-          </ul>
-        </motion.div>
+          {/* CONTACT */}
+          <div className="col-lg-3 col-md-6 col-12">
+            <h4 className="footer-title">CONTACT</h4>
 
-        {/* Brands */}
-        <motion.div className="footer-links" variants={item}>
-          <h3>Luxury Brands</h3>
-          <ul>
-            <li>BMW</li>
-            <li>Mercedes-Benz</li>
-            <li>Audi</li>
-            <li>Porsche</li>
-            <li>Lamborghini</li>
-          </ul>
-        </motion.div>
+            <div className="footer-contact">
+              <p>
+                <i className="fa-solid fa-location-dot"></i>
+                <span>
+                  Etrend Autoparts<br />
+                  123 Street, City, London<br />
+                  United States
+                </span>
+              </p>
 
-        {/* Social */}
-        <motion.div className="footer-social" variants={item}>
-          <h3>Follow Us</h3>
-          <div className="social-icons">
-            {[FaFacebookF, FaInstagram, FaTwitter, FaYoutube].map(
-              (Icon, index) => (
-                <motion.span
-                  key={index}
-                  whileHover={{
-                    scale: 1.3,
-                    rotate: 5,
-                    boxShadow:
-                      "0 0 20px rgba(212,175,55,0.8)"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Icon />
-                </motion.span>
-              )
-            )}
+              <p>
+                <i className="fa-solid fa-envelope"></i>
+                <span>sales@domain.com</span>
+              </p>
+
+              <p>
+                <i className="fa-solid fa-phone"></i>
+                <span>(123) 456 7890</span>
+              </p>
+            </div>
           </div>
-        </motion.div>
-      </motion.div>
 
-      {/* Bottom */}
-      <motion.div
-        className="footer-bottom"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-        © {new Date().getFullYear()} CarX Elite — Drive Excellence
-      </motion.div>
-    </footer>
+          {/* PRODUCTS */}
+          <div className="col-lg-3 col-md-6 col-12">
+            <h4 className="footer-title">PRODUCTS</h4>
+            <ul className="footer-links">
+              <li>Prices drop</li>
+              <li>New products</li>
+              <li>Best sales</li>
+              <li>Sitemap</li>
+              <li>Stores</li>
+            </ul>
+          </div>
+
+          {/* OUR COMPANY */}
+          <div className="col-lg-3 col-md-6 col-12">
+            <h4 className="footer-title">OUR COMPANY</h4>
+            <ul className="footer-links">
+              <li>Delivery</li>
+              <li>Legal Notice</li>
+              <li>About us</li>
+              <li>Secure payment</li>
+              <li>Contact us</li>
+            </ul>
+          </div>
+
+          {/* SUBSCRIBE */}
+          <div className="col-lg-3 col-md-6 col-12">
+            <h4 className="footer-title">SUBSCRIBE</h4>
+            <p className="subscribe-text">
+              Enter your email & hit send to subscribe
+              & get latest news & updates
+            </p>
+
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              className="subscribe-input"
+            />
+
+            <button className="subscribe-btn">SEND</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
   );
 };
 
