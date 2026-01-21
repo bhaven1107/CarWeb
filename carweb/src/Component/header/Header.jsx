@@ -1,85 +1,77 @@
-import React from 'react'
-import "./Header.css"
+import React, { useState } from "react";
+import "./Header.css";
 
 const Header = () => {
-
-    const popup = () => {
-        var popup = document.getElementById("popup_main");
-        
-        if (popup.style.display === "block") {
-            popup.style.display = "none";
-        } else {
-            popup.style.display = "block";
-        }
-    }
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <>
-            <div className="main_home_page">
+        <header className="header py-3">
+            <div className="container">
+                <div className="row align-items-center">
 
-                {/* Navbar_Component */}
-
-                <div className="Navbar_main_page">
-                    <div className="navbar-container">
-                        {/* LEFT: LOGO */}
-                        <div className="navbar-logo">
-                            <a href="#">
-                                <span>Car </span>
-                                <span id="X"> X </span>
-                                <span>Elite</span>
-                            </a>
+                    {/* Logo */}
+                    <div className="col-lg-3 col-md-6 col-6">
+                        <div className="header-logo">
+                            <img
+                                src="./assests/etrend-autoparts-logo-1607344212.png"
+                                alt="Logo"
+                            />
                         </div>
-                        {/* CENTER: MENU */}
-                        <ul className="navbar-menu">
-                            <li>Home</li>
-                            <li>Cars</li>
-                            <li>Brands</li>
-                            <li>Services</li>
-                            <li>About Us</li>
-                            <li>Contact</li>
-                        </ul>
+                    </div>
 
-                        {/* RIGHT: USER ICON */}
-                        <div className="navbar_icons">
-                            <div className="navbar_container">
-                                {/* RIGHT: Search ICON */}
-                                <div className="search_icon">
-                                    <a href="#" className="search">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </a>
-                                </div>
+                    {/* Desktop Menu */}
+                    <div className="col-lg-6 d-none d-lg-block">
+                        <nav className="header-nav">
+                            <ul>
+                                <li><a href="/Dashboard">Home</a></li>
+                                <li><a href="/shop">Shop</a></li>
+                                <li><a href="/electronics">Electronics</a></li>
+                                <li><a href="/sports-books">Sports & Books</a></li>
+                                <li><a href="/sale" className="sale">Sale</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
 
-                                {/* RIGHT: USER ICON */}
-                                <div id="user_icon" onClick={popup}>
-                                    <a href="#" id="user">
-                                        <i class="fa-solid fa-user"></i>
-                                    </a>
-                                </div>
+                    {/* Icons + Hamburger */}
+                    <div className="col-lg-3 col-md-6 col-6">
+                        <div className="header-right">
 
-                                {/* RIGHT: CART */}
-                                <div className="cart_icon">
-                                    <a href="#" className="cart">
-                                        <i class="fa-brands fa-opencart"></i>
-                                    </a>
-                                </div>
+                            <div className="header-icons">
+                                <i class="fa-solid fa-user"></i> 
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-cart-shopping"></i>
                             </div>
+
+                            {/* Animated Hamburger */}
+                            <div
+                                className={`hamburger ${menuOpen ? "active" : ""}`}
+                                onClick={() => setMenuOpen(!menuOpen)}
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            {/* {POPUP} */}
-            <div id="popup_main">
-                <div className="popup_content">
-                    <i class="fa-solid fa-user"></i>
+
+                {/* Mobile / Tablet Menu */}
+                <nav className={`mobile-menu ${menuOpen ? "active" : ""}`}>
                     <ul>
-                        <li>Profile</li>
-                        <li>Whishlist</li>
-                        <li>Logout</li>
+                        <li style={{ "--i": 1 }}><a href="/Dashboard">Home</a></li>
+                        <li style={{ "--i": 2 }}><a href="/shop">Shop</a></li>
+                        <li style={{ "--i": 3 }}><a href="/electronics">Electronics</a></li>
+                        <li style={{ "--i": 4 }}><a href="/sports-books">Sports & Books</a></li>
+                        <li style={{ "--i": 5 }}><a href="/sale" className="sale">Sale</a></li>
+                        <li style={{ "--i": 6 }}><a href="/contact">Contact Us</a></li>
                     </ul>
-                </div>
+                </nav>
+
             </div>
-        </>
-    )
-}
+        </header>
+    );
+};
 
 export default Header;

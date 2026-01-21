@@ -73,15 +73,15 @@
 
 /* start service section css */
 
-/* start Service Section */
-
 .service-sec {
     background: #fff;
 }
 
 .service-inner {
-    align-items: center;
-    padding: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 15px 0;
 }
 
 /* Icon */
@@ -89,51 +89,52 @@
     width: 42px;
     height: 42px;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Text */
 .service-title h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     margin: 0;
     color: #000;
-    white-space: nowrap;
     text-transform: uppercase;
 }
 
 .service-title span {
     font-size: 14px;
-    white-space: nowrap;
     color: #666;
     display: block;
     margin-top: 4px;
+    line-height: 1.4;
 }
 
-/* Responsive */
+/* ---------- TABLET ---------- */
 @media (max-width: 991px) {
     .service-inner {
-        justify-content: center;
-        text-align: left;
+        align-items: center;
     }
 }
 
 @media (max-width: 575px) {
+
     .service-inner {
-        justify-content: center;
-        text-align: left;
+        flex-direction: column;      
+        align-items: center;
+        text-align: center;
+        gap: 10px;
     }
 
-    .serivce-img img {
-        width: 36px;
-        height: 36px;
+    .serivce-img {
+        margin-right: 0 !important;
     }
 
     .service-title h4 {
-        font-size: 14px;
+        text-align: center;
     }
 
     .service-title span {
-        font-size: 13px;
+        text-align: center;
     }
 }
 
@@ -700,6 +701,5 @@
         max-width: 100px;
     }
 }
-
 
 /* end brand sec */
