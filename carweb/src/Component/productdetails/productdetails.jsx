@@ -78,61 +78,70 @@ const ProductDetail = () => {
                                 </ul>
 
                                 {/* Options */}
-                                <div className="option">
-                                    <label>Size</label>
-
-                                    <div className="select-wrap">
-                                        <select className="size-select">
-                                            {product?.sizes?.map((size, index) => (
-                                                <option key={index}>{size}</option>
-                                            ))}
-                                        </select>
-                                        <span className="select-icon">
-                                            <i className="fa-solid fa-chevron-down"></i>
-                                        </span>
+                                {/* Size */}
+                                {product?.sizes?.length > 0 && (
+                                    <div className="option">
+                                        <label>Size</label>
+                                        <div className="select-wrap">
+                                            <select className="size-select">
+                                                {product.sizes.map((size, index) => (
+                                                    <option key={index}>{size}</option>
+                                                ))}
+                                            </select>
+                                            <span className="select-icon">
+                                                <i className="fa-solid fa-chevron-down"></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
-                                <div className="option">
-                                    <label>Dimension</label>
-
-                                    <div className="select-wrap">
-                                        <select className="size-select">
-                                            {product?.dimension?.map((dimension, index) => (
-                                                <option key={index}>{dimension}</option>
-                                            ))}
-                                        </select>
-                                        <span className="select-icon">
-                                            <i className="fa-solid fa-chevron-down"></i>
-                                        </span>
+                                {/* Dimension */}
+                                {product?.dimension?.length > 0 && (
+                                    <div className="option">
+                                        <label>Dimension</label>
+                                        <div className="select-wrap">
+                                            <select className="size-select">
+                                                {product.dimension.map((dimension, index) => (
+                                                    <option key={index}>{dimension}</option>
+                                                ))}
+                                            </select>
+                                            <span className="select-icon">
+                                                <i className="fa-solid fa-chevron-down"></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
 
-                                <div className="option">
-                                    <label>Color</label>
-                                    {product?.colors?.map((clr, index) => (
-                                        <span
-                                            key={index}
-                                            className="color"
-                                            style={{ backgroundColor: clr }}
-                                        ></span>
-                                    ))}
-                                </div>
-
-                                {/* New Fields After Color */}
-                                <div className="option">
-                                    <label>Paper Type</label>
-                                    <div className="select-wrap">
-                                        <select className="size-select">
-                                            {product?.paperType?.map((paperType, index) => (
-                                                <option key={index}>{paperType}</option>
-                                            ))}
-                                        </select>
-                                        <span className="select-icon">
-                                            <i className="fa-solid fa-chevron-down"></i>
-                                        </span>
+                                {/* Color */}
+                                {product?.colors?.length > 0 && (
+                                    <div className="option">
+                                        <label>Color</label>
+                                        {product.colors.map((clr, index) => (
+                                            <span
+                                                key={index}
+                                                className="color"
+                                                style={{ backgroundColor: clr }}
+                                            ></span>
+                                        ))}
                                     </div>
-                                </div>
+                                )}
+
+                                {/* Paper Type */}
+                                {product?.paperType?.length > 0 && (
+                                    <div className="option">
+                                        <label>Paper Type</label>
+                                        <div className="select-wrap">
+                                            <select className="size-select">
+                                                {product.paperType.map((paperType, index) => (
+                                                    <option key={index}>{paperType}</option>
+                                                ))}
+                                            </select>
+                                            <span className="select-icon">
+                                                <i className="fa-solid fa-chevron-down"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="cart-row">
                                     <input type="number" defaultValue={product?.quantity || 1} />
