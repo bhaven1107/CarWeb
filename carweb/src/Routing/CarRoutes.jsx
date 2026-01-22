@@ -19,7 +19,7 @@ const AppRoutes = () => {
                 <Route path="/verify-otp" element={<OTP />} />
                 <Route path="/Reset-Password" element={<ResetPassword />} />
                 <Route path="/Dashboard" element={< Home />} />
-                <Route path="/ProductDetails" element={ <Productdetails/> } />
+                <Route path="/ProductDetails/:id" element={ <Productdetails/> } />
             </Routes>
         </Router>
     );

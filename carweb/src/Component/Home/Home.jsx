@@ -16,7 +16,7 @@ const Home = () => {
         categories, Categoryloading,
         ads, adsLoading,
         collections, collectionsLoading,
-        testimonials, Brands } = useHomeLogic();
+        testimonials, Brands, goToProductDetails } = useHomeLogic();
 
     return (
         <>
@@ -149,7 +149,8 @@ const Home = () => {
                                         {item.isNew && <div className="badge new">NEW</div>}
                                         {item.onSale && <div className="badge sale">ON SALE!</div>}
 
-                                        <img src={item.image} alt={item.title} />
+                                        <img src={item.mainImg} alt={item.title} onClick={() => goToProductDetails(item._id)}
+                                            style={{ cursor: "pointer" }} />
 
                                         <h4>{item.title}</h4>
                                         <p className="price">${item.price}.00</p>

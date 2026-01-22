@@ -1,6 +1,7 @@
 // useHomeLogic.js
 import { useEffect, useState } from "react";
 import { getHomeSliders, getHomeServices, getAllCategories, getAllAds, getAllCollections, getAllTestimonials, getAllBrands } from "../../Services/authService";
+import { useNavigate } from "react-router-dom";
 
 const useHomeLogic = () => {
     // Sliders
@@ -132,7 +133,7 @@ const useHomeLogic = () => {
         const fetchBrands = async () => {
             try {
                 const res = await getAllBrands();
-                setBrands(res.data); 
+                setBrands(res.data);
             } catch (err) {
                 console.error("Error fetching testimonials:", err);
             } finally {
@@ -143,6 +144,12 @@ const useHomeLogic = () => {
         fetchBrands();
     }, []);
 
+    const navigate = useNavigate();
+
+    const goToProductDetails = (id) => {
+        navigate(`/ProductDetails/${id}`);
+    };
+
     return {
         sliders, slidersLoading,
         services, servicesLoading,
@@ -150,8 +157,10 @@ const useHomeLogic = () => {
         ads, adsLoading,
         collections, collectionsLoading,
         testimonials, testimonialsLoading,
-        Brands,BrandsLoading
+        Brands, BrandsLoading,goToProductDetails
     };
+
+
 };
 
 export default useHomeLogic;

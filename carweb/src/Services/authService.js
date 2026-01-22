@@ -56,3 +56,7 @@ export const getAllTestimonials = () => {
 export const getAllBrands = () => {
     return api.get("http://localhost:5000/api/home/brands");
 }
+
+export const getProductDetails = (id) => { 
+    return api.get(`http://localhost:5000/api/home/collections/${id}`);
+ }
