@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import "./Header.css";
+// import Logo from "../../../public/assests/etrend-autoparts-logo-1607344212.png"
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <header className="header py-3">
+        <header className="header py-4">
             <div className="container">
                 <div className="row align-items-center">
 
                     {/* Logo */}
                     <div className="col-lg-3 col-md-6 col-6">
                         <div className="header-logo">
-                            <img
-                                src="./assests/etrend-autoparts-logo-1607344212.png"
-                                alt="Logo"
-                            />
+                            <img src="/assets/etrend-autoparts-logo-1607344212.png" alt="Logo" />
                         </div>
                     </div>
 

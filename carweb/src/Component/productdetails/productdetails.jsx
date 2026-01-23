@@ -5,16 +5,36 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useEffect, useState } from "react";
 import Header from "../header/Header";
 import Footer from "../footer/footer";
 import useProductDetailsLogic from "./productdetailslogic";
 
 const ProductDetail = () => {
     const thumbsSwiper = React.useRef(null);
+    const [activeImg, setActiveImg] = useState("");
 
-    const { product, stockLeft, delivery, loading } = useProductDetailsLogic();
+    const {
+        product,
+        stockLeft,
+        delivery,
+        loading,
+        finalPrice,
+        selectedColor,
+        setSelectedSize,
+        setSelectedDimension,
+        setSelectedColor,
+        setSelectedPaperType
+    } = useProductDetailsLogic();
+
+    useEffect(() => {
+        if (product?.mainImg) {
+            setActiveImg(product.mainImg);
+        }
+    }, [product]);
 
     if (loading) return <p className="text-center">Loading...</p>;
+
 
     return (
         <>
@@ -39,7 +59,7 @@ const ProductDetail = () => {
 
                                 <div className="main-img">
                                     <img
-                                        src={product?.mainImg}
+                                        src={activeImg}
                                         alt={product?.title}
                                     />
                                 </div>
@@ -53,7 +73,12 @@ const ProductDetail = () => {
                                 >
                                     {product?.thumbImgs?.map((img, index) => (
                                         <SwiperSlide key={index}>
-                                            <img src={img.trim()} alt="thumb" />
+                                            <img
+                                                src={img.trim()}
+                                                alt="thumb"
+                                                onClick={() => setActiveImg(img.trim())}
+                                                style={{ cursor: "pointer" }}
+                                            />
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
@@ -65,7 +90,7 @@ const ProductDetail = () => {
                             <div className="product-info">
 
                                 <h2>{product?.title}</h2>
-                                <h3 className="price">${product?.price}</h3>
+                                <h3 className="price">${finalPrice}</h3>
 
                                 <p className="desc">
                                     {product?.description}
@@ -77,74 +102,88 @@ const ProductDetail = () => {
                                     ))}
                                 </ul>
 
-                                {/* Options */}
                                 {/* Size */}
-                                {product?.sizes?.length > 0 && (
-                                    <div className="option">
-                                        <label>Size</label>
-                                        <div className="select-wrap">
-                                            <select className="size-select">
-                                                {product.sizes.map((size, index) => (
-                                                    <option key={index}>{size}</option>
-                                                ))}
-                                            </select>
-                                            <span className="select-icon">
-                                                <i className="fa-solid fa-chevron-down"></i>
-                                            </span>
-                                        </div>
+                                <div className="option">
+                                    <label>Size</label>
+                                    <div className="select-wrap">
+                                        <select className="size-select"
+                                            onChange={(e) =>
+                                                setSelectedSize(product.sizes.find(s => s.label === e.target.value))
+                                            }>
+                                            <option>Select Size</option>
+                                            {product.sizes.map((size, index) => (
+                                                <option key={index} value={size.label}>{size.label}</option>
+                                            ))}
+                                        </select>
+                                        <span className="select-icon">
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </span>
                                     </div>
-                                )}
+                                </div>
 
                                 {/* Dimension */}
-                                {product?.dimension?.length > 0 && (
-                                    <div className="option">
-                                        <label>Dimension</label>
-                                        <div className="select-wrap">
-                                            <select className="size-select">
-                                                {product.dimension.map((dimension, index) => (
-                                                    <option key={index}>{dimension}</option>
-                                                ))}
-                                            </select>
-                                            <span className="select-icon">
-                                                <i className="fa-solid fa-chevron-down"></i>
-                                            </span>
-                                        </div>
+                                <div className="option">
+                                    <label>Dimension</label>
+                                    <div className="select-wrap">
+                                        <select className="size-select"
+                                            onChange={(e) =>
+                                                setSelectedDimension(product.dimension.find(d => d.label === e.target.value))
+                                            }>
+                                            <option>Select Dimension</option>
+                                            {product.dimension.map((d, index) => (
+                                                <option key={index} value={d.label}>{d.label}</option>
+                                            ))}
+                                        </select>
+                                        <span className="select-icon">
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </span>
                                     </div>
-                                )}
+                                </div>
 
                                 {/* Color */}
-                                {product?.colors?.length > 0 && (
-                                    <div className="option">
-                                        <label>Color</label>
-                                        {product.colors.map((clr, index) => (
-                                            <span
-                                                key={index}
-                                                className="color"
-                                                style={{ backgroundColor: clr }}
-                                            ></span>
-                                        ))}
-                                    </div>
-                                )}
+                                <div className="option">
+                                    <label>Color</label>
+                                    {product.colors.map((clr, index) => (
+                                        <span key={index}
+                                            className={`color ${selectedColor?.label === clr.label ? "active" : ""}`}
+                                            style={{ backgroundColor: clr.label.toLowerCase() }}
+                                            onClick={() => setSelectedColor(clr)}
+                                        ></span>
+                                    ))}
+                                </div>
 
                                 {/* Paper Type */}
-                                {product?.paperType?.length > 0 && (
-                                    <div className="option">
-                                        <label>Paper Type</label>
-                                        <div className="select-wrap">
-                                            <select className="size-select">
-                                                {product.paperType.map((paperType, index) => (
-                                                    <option key={index}>{paperType}</option>
-                                                ))}
-                                            </select>
-                                            <span className="select-icon">
-                                                <i className="fa-solid fa-chevron-down"></i>
-                                            </span>
-                                        </div>
+                                <div className="option">
+                                    <label>Paper Type</label>
+                                    <div className="select-wrap">
+                                        <select className="size-select"
+                                            onChange={(e) =>
+                                                setSelectedPaperType(product.paperType.find(p => p.label === e.target.value))
+                                            }>
+                                            <option>Select Paper</option>
+                                            {product.paperType.map((p, index) => (
+                                                <option key={index} value={p.label}>{p.label}</option>
+                                            ))}
+                                        </select>
+                                        <span className="select-icon">
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </span>
                                     </div>
-                                )}
+                                </div>
 
                                 <div className="cart-row">
-                                    <input type="number" defaultValue={product?.quantity || 1} />
+                                    <input
+                                        type="number"
+                                        defaultValue={product?.quantity || 1}
+                                        min={1}                   // User 1 thi niche nahi jase
+                                        max={stockLeft}           // Stock thi vadhu nahi jase
+                                        onChange={(e) => {
+                                            let val = parseInt(e.target.value);
+                                            if (val < 1) val = 1;
+                                            if (val > stockLeft) val = stockLeft;
+                                            e.target.value = val;  // input value update
+                                        }}
+                                    />
                                     <button>ADD TO CART</button>
                                 </div>
 
