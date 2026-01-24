@@ -80,7 +80,7 @@ const ProductDetail = () => {
                                                 style={{ cursor: "pointer" }}
                                             />
                                         </SwiperSlide>
-                                    ))}
+                                    ))}  
                                 </Swiper>
                             </div>
                         </div>
